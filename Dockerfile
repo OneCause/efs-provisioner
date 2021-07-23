@@ -12,9 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is a modified copy of https://github.com/kubernetes-retired/external-storage/blob/master/aws/efs/Dockerfile
+FROM golang:1.16.6-alpine3.14 AS builder
+ENV CGO_ENABLED=0
+COPY . /go/src/github.com/OneCause/efs-provisioner
+WORKDIR /go/src/github.com/OneCause/efs-provisioner
+RUN go build -o /go/bin/efs-provisioner ./main.go
 
 FROM alpine:3.14.0
 RUN apk add --no-cache ca-certificates
-COPY out/efs-provisioner-linux-amd64 /efs-provisioner
+COPY --from=builder /go/bin/efs-provisioner /
 ENTRYPOINT ["/efs-provisioner"]
