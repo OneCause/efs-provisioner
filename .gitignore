@@ -1,0 +1,16 @@
+.idea
+.vscode
+/bin
+/build
+/out
+/test
+/tmp
+/vendor
+/vendor.orig
+/app_config
+
+*.coverprofile
+coverage.out
+
+/.go
+/efs-provisioner
