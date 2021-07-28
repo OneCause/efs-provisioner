@@ -1,5 +1,7 @@
 # efs-provisioner
 
+[![Docker Repository on Quay](https://quay.io/repository/OneCause/efs-provisioner/status "Docker Repository on Quay")](https://quay.io/repository/OneCause/efs-provisioner)
+
 This project is a fork of https://github.com/kubernetes-retired/external-storage/tree/master/aws/efs. It has been modified to add the `reuseVolumes` and `volumePrefix` storageclass options.
 
 The efs-provisioner allows you to mount EFS storage as PersistentVolumes in kubernetes. It consists of a container that has access to an AWS [EFS](https://aws.amazon.com/efs/) resource. The container reads a configmap which contains the EFS filesystem ID, the AWS region and the name you want to use for your efs-provisioner. This name will be used later when you create a storage class.
@@ -12,9 +14,12 @@ The efs-provisioner allows you to mount EFS storage as PersistentVolumes in kube
 
 If you are new to Kubernetes or to PersistentVolumes this quick start will get you up and running with simple defaults.
 
-- Download the manifest file [manifest.yaml](deploy/manifest.yaml).
+In the future we intend to add a helm chart for deploying the EFS provisioner. Until then, the manifests from the
+[retired external-storage repository](https://github.com/kubernetes-retired/external-storage/tree/master/aws/efs/deploy) can be viewed as an example.
+
+- Download the manifest file [manifest.yaml](https://raw.githubusercontent.com/kubernetes-retired/external-storage/master/aws/efs/deploy/manifest.yaml).
   ```
-  wget https://raw.githubusercontent.com/kubernetes-incubator/external-storage/master/aws/efs/deploy/manifest.yaml
+  wget https://raw.githubusercontent.com/kubernetes-retired/external-storage/master/aws/efs/deploy/manifest.yaml
   ```
 
 - In the configmap section change the `file.system.id:` and `aws.region:` to match the details of the EFS you created. Change `dns.name` if you want to mount by your own DNS name and not by AWS's `*file-system-id*.efs.*aws-region*.amazonaws.com`.
@@ -49,9 +54,9 @@ spec:
         claimName: efs
 ```
 
-If you scale this pod each aditional pod will also be able to read and write the same files. You may also reference the same claimName in another type of pod so your 2 applications can read and write the same files. If you wish to have a second application that uses EFS storage but don't want other pods to access the files, create a new claim using a new name but the same storage class.
+If you scale this pod each additional pod will also be able to read and write the same files. You may also reference the same claimName in another type of pod so your 2 applications can read and write the same files. If you wish to have a second application that uses EFS storage but don't want other pods to access the files, create a new claim using a new name but the same storage class.
 
-Some times you want the replica pods to be on EFS but you do not wish them to share the same files. In those situations it's best to use a [StatefulSet](./https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). When a StatefulSet scales up it will dynamically create new claims for your pods.
+Sometimes you want the replica pods to be on EFS but you do not wish them to share the same files. In those situations it's best to use a [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). When a StatefulSet scales up it will dynamically create new claims for your pods.
 
 ```
 apiVersion: v1
