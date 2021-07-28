@@ -14,7 +14,7 @@ The efs-provisioner allows you to mount EFS storage as PersistentVolumes in kube
 
 If you are new to Kubernetes or to PersistentVolumes this quick start will get you up and running with simple defaults.
 
-In the future we intend to add a helm chart for deploying the EFS provisioner. Until then, the old example manifests from the
+In the future we intend to add a helm chart for deploying the EFS provisioner. Until then, the manifests from the
 [retired external-storage repository](https://github.com/kubernetes-retired/external-storage/tree/master/aws/efs/deploy) can be viewed as an example.
 
 - Download the manifest file [manifest.yaml](https://raw.githubusercontent.com/kubernetes-retired/external-storage/master/aws/efs/deploy/manifest.yaml).
