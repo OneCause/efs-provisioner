@@ -8,10 +8,10 @@ import (
 	"syscall"
 
 	"k8s.io/klog/v2"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/allocator"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/controller"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/gidreclaimer"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/util"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/allocator"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/controller"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/gidreclaimer"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/util"
 )
 
 // compile time check to make sure FileSystemReclaimer implements the GIDReclaimer interface

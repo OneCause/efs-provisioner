@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.16.6-alpine3.14 AS builder
+FROM golang:1.21.3-alpine3.18 AS builder
 ENV CGO_ENABLED=0
 COPY . /go/src/github.com/OneCause/efs-provisioner
 WORKDIR /go/src/github.com/OneCause/efs-provisioner
 RUN go build -o /go/bin/efs-provisioner ./main.go
 
-FROM alpine:3.14.0
+FROM alpine:3.18.4
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /go/bin/efs-provisioner /
 ENTRYPOINT ["/efs-provisioner"]
