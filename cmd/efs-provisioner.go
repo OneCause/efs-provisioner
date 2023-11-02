@@ -29,7 +29,7 @@ import (
 	"strings"
 
 	"github.com/OneCause/efs-provisioner/internal"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/util"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/util"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -40,9 +40,9 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/klog/v2"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/controller"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/gidallocator"
-	"sigs.k8s.io/sig-storage-lib-external-provisioner/v7/mount"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/controller"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/gidallocator"
+	"sigs.k8s.io/sig-storage-lib-external-provisioner/v9/mount"
 )
 
 const (
