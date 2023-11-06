@@ -1,6 +1,6 @@
 # efs-provisioner
 
-[![Docker Repository on Quay](https://quay.io/repository/OneCause/efs-provisioner/status "Docker Repository on Quay")](https://quay.io/repository/OneCause/efs-provisioner)
+[![release](https://github.com/OneCause/efs-provisioner/actions/workflows/release.yaml/badge.svg)](https://github.com/OneCause/efs-provisioner/actions/workflows/release.yaml)
 
 This project is a fork of https://github.com/kubernetes-retired/external-storage/tree/master/aws/efs. It has been modified to add the `reuseVolumes` and `volumePrefix` storageclass options.
 
